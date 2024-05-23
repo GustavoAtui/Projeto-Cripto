@@ -3,20 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import controller.Controle;
 import model.Investidor;
+import java.sql.SQLException;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
+ * jframe de comprar criptomoedas
  */
 public class ComprarCripto extends javax.swing.JFrame {
 
     /**
      * Creates new form ComprarCripto
      */
+    Controle control;
     Investidor pessoa;
-    public ComprarCripto() {
+    
+    public ComprarCripto(Investidor pessoa,Controle control) {
+        this.pessoa= pessoa;
+        this.control = control; 
         initComponents();
     }
 
@@ -34,25 +44,25 @@ public class ComprarCripto extends javax.swing.JFrame {
         buttonGroup3 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtsenha = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rbbtc = new javax.swing.JRadioButton();
+        rbeth = new javax.swing.JRadioButton();
+        rbxrp = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        tvalor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        bcompra = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        areacot = new javax.swing.JTextArea();
+        bsenha = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -61,54 +71,96 @@ public class ComprarCripto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Comprar Criptomoedas");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("Digite sua senha:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtsenha.setBackground(new java.awt.Color(51, 0, 51));
+        txtsenha.setForeground(new java.awt.Color(255, 255, 255));
+        txtsenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtsenhaActionPerformed(evt);
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(153, 102, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("Qual Cripitomoeda deseja comprar");
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setForeground(new java.awt.Color(255, 153, 255));
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton1.setText("Bitcoin (BTC)");
-
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton2.setText("Ethereum (ETH)");
-
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton3.setText("Ripple (XRP)");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Valor em Reais para comprar a Cripto:");
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        rbbtc.setBackground(new java.awt.Color(204, 204, 255));
+        buttonGroup1.add(rbbtc);
+        rbbtc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rbbtc.setForeground(new java.awt.Color(51, 0, 51));
+        rbbtc.setText("Bitcoin (BTC)");
+        rbbtc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                rbbtcActionPerformed(evt);
             }
         });
 
+        rbeth.setBackground(new java.awt.Color(204, 204, 255));
+        buttonGroup1.add(rbeth);
+        rbeth.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rbeth.setForeground(new java.awt.Color(51, 0, 51));
+        rbeth.setText("Ethereum (ETH)");
+        rbeth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbethActionPerformed(evt);
+            }
+        });
+
+        rbxrp.setBackground(new java.awt.Color(204, 204, 255));
+        buttonGroup1.add(rbxrp);
+        rbxrp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rbxrp.setForeground(new java.awt.Color(51, 0, 51));
+        rbxrp.setText("Ripple (XRP)");
+        rbxrp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbxrpActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Valor em Reais para comprar a Cripto:");
+
+        tvalor.setBackground(new java.awt.Color(51, 0, 51));
+        tvalor.setForeground(new java.awt.Color(255, 255, 255));
+        tvalor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tvalorActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("2% de taxa de compra");
 
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("1% de taxa de compra");
 
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("1% de taxa de compra");
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Naja Info\\Downloads\\eutentei.jpg")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/eutentei-removebg-preview.png"))); // NOI18N
 
-        jButton2.setText("confirma");
+        bcompra.setBackground(new java.awt.Color(51, 0, 51));
+        bcompra.setForeground(new java.awt.Color(255, 255, 255));
+        bcompra.setText("Confirma");
+        bcompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcompraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -120,17 +172,17 @@ public class ComprarCripto extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(rbbtc, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton2)
-                                    .addComponent(jRadioButton3))
+                                    .addComponent(rbeth)
+                                    .addComponent(rbxrp))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
@@ -143,7 +195,7 @@ public class ComprarCripto extends javax.swing.JFrame {
                 .addContainerGap(60, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2))
+                .addComponent(bcompra))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,16 +204,16 @@ public class ComprarCripto extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbbtc, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton2)
+                            .addComponent(rbeth)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton3)
+                            .addComponent(rbxrp)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -169,9 +221,9 @@ public class ComprarCripto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tvalor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
-                .addComponent(jButton2))
+                .addComponent(bcompra))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -201,14 +253,19 @@ public class ComprarCripto extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Cotação");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        areacot.setBackground(new java.awt.Color(51, 0, 51));
+        areacot.setColumns(20);
+        areacot.setForeground(new java.awt.Color(255, 255, 255));
+        areacot.setRows(5);
+        areacot.setBorder(new javax.swing.border.MatteBorder(null));
+        jScrollPane1.setViewportView(areacot);
 
-        jButton1.setText("Confirma");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bsenha.setBackground(new java.awt.Color(51, 0, 51));
+        bsenha.setForeground(new java.awt.Color(255, 255, 255));
+        bsenha.setText("Confirma");
+        bsenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bsenhaActionPerformed(evt);
             }
         });
 
@@ -232,6 +289,14 @@ public class ComprarCripto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(285, 285, 285)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(205, 205, 205)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -240,34 +305,24 @@ public class ComprarCripto extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtsenha, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(bsenha)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(179, 179, 179))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(285, 285, 285)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bsenha))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -286,21 +341,63 @@ public class ComprarCripto extends javax.swing.JFrame {
         this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtsenhaActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void tvalorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tvalorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_tvalorActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void rbbtcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbbtcActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_rbbtcActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void rbethActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbethActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbethActionPerformed
+
+    private void rbxrpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbxrpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbxrpActionPerformed
+
+    private void bcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcompraActionPerformed
+        String senha = txtsenha.getText();
+        if (senha.equals(pessoa.getSenha())) {
+            try {
+                areacot.setText(control.obterTodasAsCotacoes());
+            } catch (SQLException e) {
+                areacot.setText("Erro");
+            }
+            String cripto = "";
+            if (rbbtc.isSelected()) {
+                cripto = "btc";
+            } else if (rbeth.isSelected()) {
+                cripto = "eth";
+            } else if (rbxrp.isSelected()) {
+                cripto = "xrp";
+            }
+            double valorEmReais = Double.parseDouble(tvalor.getText());
+            control.comprarCripto(valorEmReais, pessoa, cripto);
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha incorreta", "Erro", ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bcompraActionPerformed
+
+    private void bsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsenhaActionPerformed
+        String senha = txtsenha.getText();
+        if (senha.equals(pessoa.getSenha())) {
+            try {
+                areacot.setText(control.obterTodasAsCotacoes());
+            } catch (SQLException e) {
+                areacot.setText("Erro");
+            }
+            } else {
+            JOptionPane.showMessageDialog(null, "Senha incorreta", "Erro", ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bsenhaActionPerformed
+
+    
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -334,11 +431,12 @@ public class ComprarCripto extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areacot;
+    private javax.swing.JButton bcompra;
+    private javax.swing.JButton bsenha;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -355,12 +453,11 @@ public class ComprarCripto extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JRadioButton rbbtc;
+    private javax.swing.JRadioButton rbeth;
+    private javax.swing.JRadioButton rbxrp;
+    private javax.swing.JTextField tvalor;
+    private javax.swing.JTextField txtsenha;
     // End of variables declaration//GEN-END:variables
 }

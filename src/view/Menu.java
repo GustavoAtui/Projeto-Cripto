@@ -6,19 +6,18 @@ package view;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
+ * jframe do menu com opcoes de escolha 
  */
+import DAO.InvestidorDAO;
 import controller.Controle;
 import model.Investidor;
 public class Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
-    
     
     Investidor pessoa;
     Controle control;
+    InvestidorDAO investidorDAO;
     public Menu(Investidor pessoa) {
         initComponents();
         this.pessoa = pessoa;
@@ -67,11 +66,16 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
+        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(51, 0, 51), new java.awt.Color(51, 0, 51), new java.awt.Color(51, 0, 51), new java.awt.Color(51, 0, 51)));
 
+        jLabel1.setBackground(new java.awt.Color(51, 0, 51));
         jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MENU");
 
@@ -92,7 +96,9 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
+        btnSaldo.setBackground(new java.awt.Color(51, 0, 51));
         btnSaldo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSaldo.setForeground(new java.awt.Color(255, 255, 255));
         btnSaldo.setText("Consultar Saldo");
         btnSaldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +106,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnExtrato.setBackground(new java.awt.Color(51, 0, 51));
         btnExtrato.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnExtrato.setForeground(new java.awt.Color(255, 255, 255));
         btnExtrato.setText("Consultar Extrato");
         btnExtrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +116,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnDeposito.setBackground(new java.awt.Color(51, 0, 51));
         btnDeposito.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnDeposito.setForeground(new java.awt.Color(255, 255, 255));
         btnDeposito.setText("Deposito");
         btnDeposito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +126,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnSacar.setBackground(new java.awt.Color(51, 0, 51));
         btnSacar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSacar.setForeground(new java.awt.Color(255, 255, 255));
         btnSacar.setText("Sacar Reais");
         btnSacar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +136,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnCompra.setBackground(new java.awt.Color(51, 0, 51));
         btnCompra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCompra.setForeground(new java.awt.Color(255, 255, 255));
         btnCompra.setText("Comprar Criptomoedeas");
         btnCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +146,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnVenda.setBackground(new java.awt.Color(51, 0, 51));
         btnVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnVenda.setForeground(new java.awt.Color(255, 255, 255));
         btnVenda.setText("Vender Criptomoedas");
         btnVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +156,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnattcot.setBackground(new java.awt.Color(51, 0, 51));
         btnattcot.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnattcot.setForeground(new java.awt.Color(255, 255, 255));
         btnattcot.setText("Atualizar Cotação");
         btnattcot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +166,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnsair.setBackground(new java.awt.Color(51, 0, 51));
         btnsair.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnsair.setForeground(new java.awt.Color(255, 255, 255));
         btnsair.setText("Sair");
         btnsair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,11 +221,12 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Naja Info\\Downloads\\bitcoin.jpg")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/bitcoin-removebg-preview.png"))); // NOI18N
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Naja Info\\Downloads\\ethe.jpg")); // NOI18N
+        jLabel11.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/ethe-removebg-preview.png"))); // NOI18N
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Naja Info\\Downloads\\xrp.png")); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/xrp-removebg-preview.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -248,7 +269,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaldoActionPerformed
 
     private void btnExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtratoActionPerformed
-        ConsultaExtrato menu = new ConsultaExtrato();
+        ConsultaExtrato menu = new ConsultaExtrato(pessoa,control);
         menu.setVisible(true);  
         this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_btnExtratoActionPerformed
@@ -266,19 +287,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSacarActionPerformed
 
     private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
-        ComprarCripto menu = new ComprarCripto();
+        ComprarCripto menu = new ComprarCripto(pessoa,control);
         menu.setVisible(true); 
         this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_btnCompraActionPerformed
 
     private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
-        VenderCripto menu = new VenderCripto();
+        VenderCripto menu = new VenderCripto(pessoa,control);
         menu.setVisible(true);   
         this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_btnVendaActionPerformed
 
     private void btnattcotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnattcotActionPerformed
-        Atualizarcot menu = new Atualizarcot();
+        Atualizarcot menu = new Atualizarcot(pessoa,control);
         menu.setVisible(true); 
         this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_btnattcotActionPerformed

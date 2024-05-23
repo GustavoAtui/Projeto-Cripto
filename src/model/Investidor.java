@@ -6,14 +6,12 @@ package model;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
+ * 
  */
 public class Investidor extends Pessoa {
     private double saldobtc, saldoeth , saldoxrp, saldoreais;
     private Carteira carteira;
-    private Extrato extrato;
-    
-
     
     public void setSaldoreais(double saldoreais) {
         this.saldoreais = saldoreais;
@@ -27,18 +25,9 @@ public class Investidor extends Pessoa {
         this.carteira = carteira;
     }
 
-    public void setExtrato(Extrato extrato) {
-        this.extrato = extrato;
-    }
-
     public Carteira getCarteira() {
         return carteira;
     }
-
-    public Extrato getExtrato() {
-        return extrato;
-    }
-    
 
     public void setSaldobtc(double saldobtc) {
         this.saldobtc = saldobtc;
@@ -70,7 +59,7 @@ public class Investidor extends Pessoa {
         this.saldoeth = saldoeth;
         this.saldoxrp = saldoxrp;
         this.carteira = carteira;
-        this.extrato = extrato;
+        
     }
 
     public Investidor(String nome, String cpf , String senha) {

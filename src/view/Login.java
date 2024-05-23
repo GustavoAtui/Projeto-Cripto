@@ -12,7 +12,8 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
+ * jframe onde realiza o login
  */
 public class Login extends javax.swing.JFrame {
 
@@ -69,31 +70,40 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LOGIN");
         jLabel1.setToolTipText("");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 0, 51));
         jLabel3.setText("SENHA: ");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("CPF: ");
 
+        tcpf.setBackground(new java.awt.Color(51, 0, 51));
+        tcpf.setForeground(new java.awt.Color(255, 255, 255));
         tcpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tcpfActionPerformed(evt);
             }
         });
 
+        tsenha.setBackground(new java.awt.Color(51, 0, 51));
+        tsenha.setForeground(new java.awt.Color(255, 255, 255));
         tsenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tsenhaActionPerformed(evt);
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Naja Info\\Downloads\\dogecoin.jpg")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/dogecoin-removebg-preview.png"))); // NOI18N
 
+        blogin.setBackground(new java.awt.Color(51, 0, 51));
         blogin.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        blogin.setForeground(new java.awt.Color(204, 204, 204));
         blogin.setText("LOGIN");
         blogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,9 +174,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tsenhaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

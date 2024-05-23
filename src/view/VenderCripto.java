@@ -4,19 +4,29 @@
  */
 package view;
 
+import controller.Controle;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import model.Investidor;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
+ * jframe onde realiza a venda de criptomoedas 
  */
 public class VenderCripto extends javax.swing.JFrame {
 
     /**
      * Creates new form VenderCripto
      */
+    Controle control;
     Investidor pessoa;
-    public VenderCripto() {
+    public VenderCripto(Investidor pessoa, Controle control) {
+        this.pessoa = pessoa;
+        this.control = control;
         initComponents();
     }
 
@@ -30,26 +40,27 @@ public class VenderCripto extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tsenha = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        areacot = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rbbtc = new javax.swing.JRadioButton();
+        rbeth = new javax.swing.JRadioButton();
+        rbxrp = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        tvalor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bvenda = new javax.swing.JButton();
+        bsenha = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -60,43 +71,77 @@ public class VenderCripto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Vender Criptomoedas");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("Digite sua senha :");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        tsenha.setBackground(new java.awt.Color(51, 0, 51));
+        tsenha.setForeground(new java.awt.Color(255, 255, 255));
+
+        areacot.setBackground(new java.awt.Color(51, 0, 51));
+        areacot.setColumns(20);
+        areacot.setForeground(new java.awt.Color(255, 255, 255));
+        areacot.setRows(5);
+        jScrollPane1.setViewportView(areacot);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Cotação");
 
+        jPanel1.setBackground(new java.awt.Color(153, 102, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        jLabel4.setBackground(new java.awt.Color(51, 0, 51));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("Qual Criptomoeda deseja Vender");
 
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jRadioButton1.setText("Bitcoin (BTC)");
+        rbbtc.setBackground(new java.awt.Color(204, 204, 255));
+        buttonGroup1.add(rbbtc);
+        rbbtc.setForeground(new java.awt.Color(51, 0, 51));
+        rbbtc.setText("Bitcoin (BTC)");
 
-        jRadioButton2.setText("Ethereum (ETH)");
+        rbeth.setBackground(new java.awt.Color(204, 204, 255));
+        buttonGroup1.add(rbeth);
+        rbeth.setForeground(new java.awt.Color(51, 0, 51));
+        rbeth.setText("Ethereum (ETH)");
 
-        jRadioButton3.setText("Ripple (XRP)");
+        rbxrp.setBackground(new java.awt.Color(204, 204, 255));
+        buttonGroup1.add(rbxrp);
+        rbxrp.setForeground(new java.awt.Color(51, 0, 51));
+        rbxrp.setText("Ripple (XRP)");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Valor em Moeda selecionada para vender:");
 
+        tvalor.setBackground(new java.awt.Color(51, 0, 51));
+        tvalor.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("3% de taxa na venda");
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("2% de taxa na venda");
 
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("1% de taxa na venda");
 
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Naja Info\\Downloads\\eutentei.jpg")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/eutentei-removebg-preview.png"))); // NOI18N
 
-        jButton2.setText("Confirma");
+        bvenda.setBackground(new java.awt.Color(51, 0, 51));
+        bvenda.setForeground(new java.awt.Color(255, 255, 255));
+        bvenda.setText("Confirma");
+        bvenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bvendaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -108,9 +153,9 @@ public class VenderCripto extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton3))
+                            .addComponent(rbbtc)
+                            .addComponent(rbeth)
+                            .addComponent(rbxrp))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
@@ -122,9 +167,9 @@ public class VenderCripto extends javax.swing.JFrame {
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                        .addComponent(jButton2))))
+                        .addComponent(bvenda))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,15 +178,15 @@ public class VenderCripto extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton1)
+                            .addComponent(rbbtc)
                             .addComponent(jLabel6))
                         .addGap(53, 53, 53)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton2)
+                            .addComponent(rbeth)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton3)
+                            .addComponent(rbxrp)
                             .addComponent(jLabel8))
                         .addGap(50, 50, 50))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -149,11 +194,11 @@ public class VenderCripto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tvalor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2))
+                .addComponent(bvenda))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -180,10 +225,12 @@ public class VenderCripto extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jButton3.setText("Confrima");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bsenha.setBackground(new java.awt.Color(51, 0, 51));
+        bsenha.setForeground(new java.awt.Color(255, 255, 255));
+        bsenha.setText("Confirma");
+        bsenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bsenhaActionPerformed(evt);
             }
         });
 
@@ -217,9 +264,9 @@ public class VenderCripto extends javax.swing.JFrame {
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tsenha, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3))
+                                .addComponent(bsenha))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(293, 293, 293)
                                 .addComponent(jLabel3)))
@@ -239,8 +286,8 @@ public class VenderCripto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(tsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bsenha))
                 .addGap(12, 12, 12)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -256,16 +303,51 @@ public class VenderCripto extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         Menu menu = new Menu(pessoa);
         menu.setVisible(true);
-        this.setVisible(false);        // TODO add your handling code here:
+        this.setVisible(false);   
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void bvendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bvendaActionPerformed
+        String senha = tsenha.getText();
+        if (senha.equals(pessoa.getSenha())) {
+            try {
+                areacot.setText(control.obterTodasAsCotacoes());
+            } catch (SQLException e) {
+                areacot.setText("Erro");
+            }
+            String cripto = "";
+            if (rbbtc.isSelected()) {
+                cripto = "btc";
+            } else if (rbeth.isSelected()) {
+                cripto = "eth";
+            } else if (rbxrp.isSelected()) {
+                cripto = "xrp";
+            }
+            double quantidade = Double.parseDouble(tvalor.getText());
+            try {
+                control.venderCripto(quantidade, pessoa, cripto);
+            } catch (SQLException ex) {
+                Logger.getLogger(VenderCripto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha incorreta", "Erro", ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bvendaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void bsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsenhaActionPerformed
+        String senha = tsenha.getText();
+        if (senha.equals(pessoa.getSenha())) {
+            try {
+                areacot.setText(control.obterTodasAsCotacoes());
+            } catch (SQLException e) {
+                areacot.setText("Erro");
+            }
+            } else {
+            JOptionPane.showMessageDialog(null, "Senha incorreta", "Erro", ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bsenhaActionPerformed
+
+    
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -299,9 +381,11 @@ public class VenderCripto extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areacot;
+    private javax.swing.JButton bsenha;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton bvenda;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -317,12 +401,11 @@ public class VenderCripto extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JRadioButton rbbtc;
+    private javax.swing.JRadioButton rbeth;
+    private javax.swing.JRadioButton rbxrp;
+    private javax.swing.JTextField tsenha;
+    private javax.swing.JTextField tvalor;
     // End of variables declaration//GEN-END:variables
 }

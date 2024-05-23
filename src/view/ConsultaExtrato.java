@@ -4,19 +4,35 @@
  */
 package view;
 
+import DAO.InvestidorDAO;
+import controller.Controle;
+import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import model.Investidor;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
+ * jframe onde aparece o extrato
  */
 public class ConsultaExtrato extends javax.swing.JFrame {
 
     /**
      * Creates new form ConsultaExtrato
      */
+    Controle control;
     Investidor pessoa;
-    public ConsultaExtrato() {
+    InvestidorDAO investidorDAO;
+    public ConsultaExtrato(Investidor pessoa, Controle control) {
+        this.pessoa = pessoa;
+        this.control= control;
+        this.investidorDAO = investidorDAO;
         initComponents();
     }
 
@@ -35,9 +51,9 @@ public class ConsultaExtrato extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        areaextrato = new javax.swing.JTextArea();
+        tsenha = new javax.swing.JTextField();
+        bsenha = new javax.swing.JButton();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -52,22 +68,36 @@ public class ConsultaExtrato extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Consulta Extrato");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("Digite sua senha: ");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        areaextrato.setBackground(new java.awt.Color(51, 0, 51));
+        areaextrato.setColumns(20);
+        areaextrato.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        areaextrato.setForeground(new java.awt.Color(255, 255, 255));
+        areaextrato.setRows(5);
+        jScrollPane1.setViewportView(areaextrato);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tsenha.setBackground(new java.awt.Color(51, 0, 51));
+        tsenha.setForeground(new java.awt.Color(255, 255, 255));
+        tsenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tsenhaActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Confirma");
+        bsenha.setBackground(new java.awt.Color(51, 0, 51));
+        bsenha.setForeground(new java.awt.Color(255, 255, 255));
+        bsenha.setText("Confirma");
+        bsenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bsenhaActionPerformed(evt);
+            }
+        });
 
         jMenu6.setText("Voltar");
 
@@ -102,9 +132,9 @@ public class ConsultaExtrato extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tsenha, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(bsenha)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -115,8 +145,8 @@ public class ConsultaExtrato extends javax.swing.JFrame {
                 .addGap(106, 106, 106)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(tsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bsenha))
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                 .addContainerGap())
@@ -125,9 +155,9 @@ public class ConsultaExtrato extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tsenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_tsenhaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         Menu menu = new Menu(pessoa);
@@ -135,9 +165,23 @@ public class ConsultaExtrato extends javax.swing.JFrame {
         this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void bsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsenhaActionPerformed
+        if (this.tsenha.getText().equals(pessoa.getSenha())) {
+            JOptionPane.showMessageDialog(null, "Senha válida", "Correto", INFORMATION_MESSAGE);
+            List<String> extrato = control.printExtrato(pessoa.getCpf());
+            StringBuilder extratoCompleto = new StringBuilder();
+            extratoCompleto.append("Nome: ").append(pessoa.getNome()).append("\n")
+                    .append("CPF: ").append(pessoa.getCpf()).append("\n\n");
+            for (String linha : extrato) {
+                extratoCompleto.append(linha);
+            }
+            this.areaextrato.setText(extratoCompleto.toString());
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha incorreta!", "Erro", ERROR_MESSAGE);
+        } 
+    }//GEN-LAST:event_bsenhaActionPerformed
+
+   
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -171,7 +215,8 @@ public class ConsultaExtrato extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextArea areaextrato;
+    private javax.swing.JButton bsenha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu4;
@@ -182,7 +227,6 @@ public class ConsultaExtrato extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField tsenha;
     // End of variables declaration//GEN-END:variables
 }

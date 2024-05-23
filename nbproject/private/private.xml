@@ -3,20 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/Projeto.java</file>
+            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/view/ComprarCripto.java</file>
+            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/view/ConsutaSaldo.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/DAO/InvestidorDAO.java</file>
+            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/view/VenderCripto.java</file>
+            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/model/Investidor.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/controller/Controle.java</file>
+            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/model/xrp.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/model/eth.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/model/btc.java</file>
+            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/view/ConsultaExtrato.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/view/Menu.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/model/real.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/model/Carteira.java</file>
+            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/controller/controledelogin.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/model/moedas.java</file>
+            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/model/Pessoa.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/view/Atualizarcot.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/view/Deposito.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/view/Login.java</file>
+            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/model/Extrato.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/view/Sacar.java</file>
-            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/model/tarifa.java</file>
             <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/DAO/Conexao.java</file>
+            <file>file:/C:/Users/Naja%20Info/Documents/NetBeansProjects/Projeto/src/model/tarifa.java</file>
         </group>
     </open-files>
 </project-private>

@@ -6,7 +6,8 @@ package model;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
+ * 
  */
 public class Pessoa {
     private String nome,cpf,senha;

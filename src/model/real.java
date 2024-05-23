@@ -6,14 +6,14 @@ package model;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
  */
 public class real extends moedas{
-    public double getTaxaCompra(){
+    public double getTaxacompra(){
         return 0.00;
     }
 
-    public double getTaxaVenda(){
+    public double getTaxavenda(){
         return 0.00;
     }
 

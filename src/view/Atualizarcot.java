@@ -4,22 +4,32 @@
  */
 package view;
 
+import DAO.InvestidorDAO;
 import model.Investidor;
 import controller.Controle;
 import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
+ * jFrame da atualizao da cotacao
  */
 public class Atualizarcot extends javax.swing.JFrame {
 
     /**
      * Creates new form Atualizarcot
      */
+    Controle control;
     Investidor pessoa;
-    public Atualizarcot() {
+    InvestidorDAO investidorDAO;
+    public Atualizarcot(Investidor pessoa,Controle control) {
         this.pessoa = pessoa;
+        this.control = control;
+        this.investidorDAO = investidorDAO;
+
         initComponents();
     }
 
@@ -44,11 +54,17 @@ public class Atualizarcot extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setBackground(new java.awt.Color(51, 0, 51));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Atualizar a Cotação");
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setForeground(new java.awt.Color(204, 204, 255));
 
+        batualizarcot.setBackground(new java.awt.Color(51, 0, 51));
+        batualizarcot.setForeground(new java.awt.Color(255, 255, 255));
         batualizarcot.setText("Nova cotação");
         batualizarcot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +72,9 @@ public class Atualizarcot extends javax.swing.JFrame {
             }
         });
 
+        areacotacaoatualizada.setBackground(new java.awt.Color(51, 0, 51));
         areacotacaoatualizada.setColumns(20);
+        areacotacaoatualizada.setForeground(new java.awt.Color(255, 255, 255));
         areacotacaoatualizada.setRows(5);
         jScrollPane1.setViewportView(areacotacaoatualizada);
 
@@ -132,13 +150,12 @@ public class Atualizarcot extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void batualizarcotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batualizarcotActionPerformed
-       
-        // TODO add your handling code here:
+        String novasCotas = null;
+        novasCotas = control.atualizarCotacoes(); // TODO add your handling code here:
+        areacotacaoatualizada.setText(novasCotas);
     }//GEN-LAST:event_batualizarcotActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

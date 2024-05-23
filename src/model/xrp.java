@@ -6,14 +6,14 @@ package model;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
  */
-public class xrp {
-    public double getTaxaCompra(){
+public class xrp extends moedas {
+    public double getTaxacompra(){
         return 0.01;
     }
 
-    public double getTaxaVenda(){
+    public double getTaxavenda(){
         return 0.01;
     }
 

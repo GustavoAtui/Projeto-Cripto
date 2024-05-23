@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import model.moedas;
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
  */
 public class Carteira{
     ArrayList<moedas> moedas = new ArrayList<>();

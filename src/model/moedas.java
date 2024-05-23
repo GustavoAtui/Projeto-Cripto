@@ -6,11 +6,27 @@ package model;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
  */
 public class moedas  {
     private double cotacao,taxadecompra,taxadevenda;
 
+    public double getTaxadecompra() {
+        return taxadecompra;
+    }
+
+    public double getTaxadevenda() {
+        return taxadevenda;
+    }
+
+    public void setTaxadecompra(double taxadecompra) {
+        this.taxadecompra = taxadecompra;
+    }
+
+    public void setTaxadevenda(double taxadevenda) {
+        this.taxadevenda = taxadevenda;
+    }
+    
     public moedas() {
     }
 

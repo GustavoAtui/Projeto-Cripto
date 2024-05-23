@@ -15,7 +15,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
+ * jframe onde realiza o deposito
  */
 public class Deposito extends javax.swing.JFrame {
 
@@ -87,23 +88,31 @@ public class Deposito extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Deposito");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("Digite o Valor que sera depositado em reais: ");
 
+        tvalor.setBackground(new java.awt.Color(51, 0, 51));
+        tvalor.setForeground(new java.awt.Color(255, 255, 255));
         tvalor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tvalorActionPerformed(evt);
             }
         });
 
+        areasaldo.setBackground(new java.awt.Color(51, 0, 51));
         areasaldo.setColumns(20);
+        areasaldo.setForeground(new java.awt.Color(255, 255, 255));
         areasaldo.setRows(5);
         jScrollPane1.setViewportView(areasaldo);
 
         jLabel3.setText("Saldo atualizado ");
 
+        bconfirma.setBackground(new java.awt.Color(51, 0, 51));
+        bconfirma.setForeground(new java.awt.Color(255, 255, 255));
         bconfirma.setText("Confirma");
         bconfirma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,18 +195,18 @@ public class Deposito extends javax.swing.JFrame {
         atualizarSaldo();// TODO add your handling code here:
     }//GEN-LAST:event_bconfirmaActionPerformed
     private void atualizarSaldo() {
+        
         DecimalFormat df = new DecimalFormat("$0.000");
+        String saldoReais = df.format(pessoa.getSaldoreais());
         String saldobtc = df.format(pessoa.getSaldobtc());
         String saldoeth = df.format(pessoa.getSaldoeth());
         String saldoxrp = df.format(pessoa.getSaldoxrp());
         
-        double saldoReais = pessoa.getSaldoreais();
+        
         areasaldo.setText("Novo saldo\nNome: " + pessoa.getNome() +"\nCPF: " + pessoa.getCpf() +
         "\nReais: " + saldoReais +"\nBitcoin: " + saldobtc + "\nEthereum: " + saldoeth +"\nRipple: " + saldoxrp);
     }
-    /**
-     * @param args the command line arguments
-     */
+   
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

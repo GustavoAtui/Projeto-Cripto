@@ -12,7 +12,8 @@ import model.Investidor;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
+ * jframe onde aparece o saldo
  */
 public class ConsutaSaldo extends javax.swing.JFrame {
 
@@ -47,13 +48,18 @@ public class ConsutaSaldo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        areasaldo.setBackground(new java.awt.Color(51, 0, 51));
         areasaldo.setColumns(20);
+        areasaldo.setForeground(new java.awt.Color(255, 255, 255));
         areasaldo.setRows(5);
         jScrollPane1.setViewportView(areasaldo);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Digite sua Senha: ");
 
+        tsenha.setBackground(new java.awt.Color(51, 0, 51));
+        tsenha.setForeground(new java.awt.Color(255, 255, 255));
         tsenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tsenhaActionPerformed(evt);
@@ -61,9 +67,12 @@ public class ConsutaSaldo extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Consulta de Saldo");
 
+        confirmasenha.setBackground(new java.awt.Color(51, 0, 51));
+        confirmasenha.setForeground(new java.awt.Color(255, 255, 255));
         confirmasenha.setText("Confirma");
         confirmasenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,23 +151,21 @@ public class ConsutaSaldo extends javax.swing.JFrame {
         if(this.tsenha.getText().equals(pessoa.getSenha())){
             existe = 1  ;
             JOptionPane.showMessageDialog(null,"Senha valida" , "Correto", INFORMATION_MESSAGE);
-            DecimalFormat df = new DecimalFormat("$0.000");
+            DecimalFormat df = new DecimalFormat("$0.000000");
             String saldobtc = df.format(pessoa.getSaldobtc());
             String saldoreais = df.format(pessoa.getSaldoreais());
             String saldoeth = df.format(pessoa.getSaldoeth());
             String saldoxrp = df.format(pessoa.getSaldoxrp());
 
             this.areasaldo.setText("Nome: " + pessoa.getNome() + "\nCPF: " + pessoa.getCpf() + 
-            "\nReais: " + saldoreais +"\nBitcoin: " + saldobtc + "\nEthereum: " + saldoeth +"\nRipple: " + saldoxrp);
+            "\nReais: " + saldoreais +"\nBtc: " + saldobtc + "\nEth: " + saldoeth +"\nXrp: " + saldoxrp);
             
         }else{
             JOptionPane.showMessageDialog(null,"Senha incorreta!" , "Erro", ERROR_MESSAGE);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_confirmasenhaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

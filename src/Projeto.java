@@ -9,7 +9,20 @@ import view.Login;
 
 /**
  *
- * @author Naja Info
+ * @author Gustavo Atui
+ * Projeto Exchange de Criptomoedas da Diciplina Orientação a obejtos
+ * utilizando interfaces graficas e banco de dados SQL para armazenar os dados do projeto. O projeto conta com 9 funções sendo elas
+ *1- Login
+ *2- Menu
+ *3- Consultar Saldo
+ *4- Consultar extrato
+ *5-Deposito
+ *6-Sacar (apenas em Real)
+ *7-Comprar Criptomoedas
+ *8-Vender Criptomoedas
+ *9- Atualizar a Cotação das criptomoedas
+ * e 3 tabelas no banco de dados SQL uma de Pessoa uma onde tem as moedas e uma para os extratos 
+ * 
  */
 public class Projeto {
 
@@ -19,7 +32,7 @@ public class Projeto {
     public static void main(String[] args) {
         Login login = new Login();
         login.setVisible(true);
-        // TODO code application logic here
+        
     }
     
 }
